@@ -10,13 +10,14 @@ public class Coche {
     private int motor;
     private int peso_plataforma;
     
+    //propiedades no comunes(las caracteristicas que cambian en cada coche)
     private String color;
     private int peso_total;
     private boolean asientos_cuero, climatizador;
     
 
     //decirle cuales son sus valores con metodo constructor: Coche() (da un estado incial al objeto)
-    //METODO CONSTRUCTOR establecemos las variables
+    //METODO CONSTRUCTOR establecemos las variables, puede haber varios constructores para cada clase.
     public Coche() {
         ruedas=4;
         largo=2000;
@@ -30,10 +31,10 @@ public class Coche {
     public Coche(String string) {
     }
 
-    //MMETODO GETTER SINTAXIS. NOS INFORMA DEL VALOR, tiene que llevar un return
+    //METODO GETTER SINTAXIS. NOS INFORMA DEL VALOR, tiene que llevar un return
     public String dime_datos_generales(){
-        return "la plataforma del coche tiene: " + ruedas + " ruedas. " +
-    "mide: " + largo/1000 + " metros con un ancho de  " + ancho +
+        return "la plataforma del coche Renault tiene: " + ruedas + " ruedas. " +
+    "mide: " + largo/1000 + " metros con un ancho de:  " + ancho +
     " cm y peso de plataforma " + peso_plataforma + " kg";
     }
     
@@ -54,13 +55,13 @@ public class Coche {
     		this.asientos_cuero=true;
     		
     	} else {
-    		this.asientos_cuero=false;
+    		this.asientos_cuero=true;
     	}
     }
     
     //metodo asientos
     public String dime_asientos() {
-    	if(asientos_cuero==true) {
+    	if(asientos_cuero) {
     		return "el coche tiene asientos de cuero";
     	}else {
     		return "el coche no tiene asientos de cuero";
@@ -85,6 +86,40 @@ public class Coche {
     		return "el coche tiene Aa";
     	}
     }
+    
+    
+    
+    //NO RECOMENDABLE PONER JUNTOS SETTER Y GETTER:
+    public String dime_peso_coche() { //setter (establece las variables)  + getter (obtiene con return)
+    	int peso_carroceria=500; //iniciamos una variable peso_carroceria
+    	
+    	peso_total= peso_plataforma + peso_carroceria;  //iniciamos otra variable peso_total sea igual a la suma
+    	
+    	if(asientos_cuero==true) {
+    		peso_total += 50;
+    	}
+    	if(climatizador==true) {
+    		peso_total +=20;
+    	}
+    	
+    	//getter
+    	return "El peso del coche es " + peso_total;
+    }
+   
+    
+    public int precio_coche() {
+    	int precio_final=10000;
+    	
+    	if(asientos_cuero==true) {
+    		precio_final+=2000;
+    	}
+    	if(climatizador==true) {
+    		precio_final += 1500;
+    	}
+    	
+    	return precio_final;
+    }
+     
 
 
     
