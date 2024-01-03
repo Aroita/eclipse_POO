@@ -22,11 +22,12 @@ public class Uso_Empleado{
 		
 		
 // #####################   instancias de la clase empleado FORMA CORTA CON ARRAYS ############################################################################
-		Empleado[] misEmpleados = new Empleado[3];  // es lo mismo que: String[] miArray=new String[3];
+		Empleado[] misEmpleados = new Empleado[4];  // es lo mismo que: String[] miArray=new String[3];
 		
 		misEmpleados[0]=new Empleado("Paco Gomez", 38000, 2020, 11, 14);  //alternativa de meter diferentes tipos de datos: string y int...
 		misEmpleados[1]=new Empleado("Pepe Gyuo", 32000, 2012, 19, 04);
 		misEmpleados[2]=new Empleado("Maria garci", 41000, 2025, 15, 05);
+		misEmpleados[3]=new Empleado("Nuria pala");  //este reconocera al 2º metodo empleado
 		
 //bucle for forma 1
 		/*for(int i=0; i<3; i++) {
@@ -61,7 +62,7 @@ public class Uso_Empleado{
 
 }
 
-//clase del objeto empleado
+//clase  y metodo del objeto empleado
 class Empleado{
 	
 	public Empleado(String nom, double suel, int anio, int mes, int dia) {
@@ -74,8 +75,13 @@ class Empleado{
 		GregorianCalendar calendario = new GregorianCalendar(anio,  mes-1, dia);
 		//añadimos a calendario la funcion getTime() para obtener la fecha
 		altaContrato=calendario.getTime();
-		
 			
+	}
+	
+	//#########################  sobrecarga de constructores dentro de una misma clase - video 39  #############################################
+	public Empleado(String nom) {
+		this(nom, 30000, 2020,01,01);  //busca al otro constructor empleado que pasa los parametros de this
+		
 	}
 	
 	public String dameNombre() { //getter

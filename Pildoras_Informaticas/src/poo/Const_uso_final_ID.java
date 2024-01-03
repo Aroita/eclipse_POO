@@ -3,18 +3,25 @@ package poo;
 //LA CONTANTE SE ASEGURA QUE LA PALABRA RESERVADA: FINAL, NO CAMBIE EL VALOR
 // private static int IdSiguiente=1, aplica un id que no se puede modificar es generado auto
 
+//EL METODO STATIC: no actua sobre objetos, solo acceden a campos static y para llamarlo se usa nombreClase.nombreMetodo --> Empleados.dameIdSiguiente()
+
 public class Const_uso_final_ID {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Empleados trabajador1=new Empleados("Paco"); //2 objetos trabajador1y2 con estado inicial de empleado sera el string que le pasamos y la seccion la completa en el constructor
 		Empleados trabajador2=new Empleados("Ana");
+		Empleados trabajador3=new Empleados("Abel");
 		
 		trabajador1.cambiaSeccion("RRHH");
 		//trabajador1.cambiaNombre("maria"); //PRUEBA CON LA PALABRA RESERVADA FINAL
 		
-		System.out.println(trabajador1.devuelveDatos()); //el metodo getter retornara los datos
-		System.out.println(trabajador2.devuelveDatos());
+		//System.out.println(trabajador1.devuelveDatos()); //el metodo getter retornara los datos de los objetos(trabajador1,2,3)
+		System.out.println(trabajador1.devuelveDatos() + 
+				"\n" + trabajador2.devuelveDatos() + 
+				"\n" + trabajador3.devuelveDatos());
+		
+		System.out.println(Empleados.dameIdSiguiente()); //forma de llamar un metodo static(ya que static no llama al objteto
 
 	}
 
@@ -41,7 +48,11 @@ class Empleados{
 	
 	//METODO GETTER
 	public String devuelveDatos() {
-		return "Empleado: " + nombre + ", y la secciones es: "+ seccion + " id:" + Id;
+		return "Empleado: " + nombre + ", y la secciones es: "+ seccion + ", con id:" + Id;
+	}
+	
+	public static String dameIdSiguiente() {
+		return "el id siguiente es: " + IdSiguiente;
 	}
 	
 	            //CONSTANTE, PRUEBA CON LA PALABRA RESERVADA FINAL
