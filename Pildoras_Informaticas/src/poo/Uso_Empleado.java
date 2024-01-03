@@ -6,7 +6,57 @@ public class Uso_Empleado{
 //clase publica principal 
 	public static void main(String[] args) {
 	// TODO Auto-generated method stub
-
+		
+/*  // ####################   instancias de la clase empleado FORMA LARGA ###########################
+		Empleado empleado1= new Empleado("Paco Gomez", 38000, 2020, 11, 14);
+		Empleado empleado2= new Empleado("Pepe Gyuo", 32000, 2012, 19, 04);
+		Empleado empleado3= new Empleado("Maria garci", 41000, 2025, 15, 05);
+		
+		empleado1.subeSueldo(5);  //numero de porcentaje 5
+		empleado2.subeSueldo(5);
+		empleado3.subeSueldo(5);
+		System.out.println("Nombre: "+ empleado1.dameNombre()+", Sueldo: " + empleado1.dameSueldo()+ ", Fecha alta: "+ empleado1.dameFechaAlta());
+		System.out.println("Nombre: "+ empleado2.dameNombre()+", Sueldo: " + empleado2.dameSueldo()+ ", Fecha alta: "+ empleado2.dameFechaAlta());
+		System.out.println("Nombre: "+ empleado3.dameNombre()+", Sueldo: " + empleado3.dameSueldo()+ ", Fecha alta: "+ empleado3.dameFechaAlta());
+		*/
+		
+		
+// #####################   instancias de la clase empleado FORMA CORTA CON ARRAYS ############################################################################
+		Empleado[] misEmpleados = new Empleado[3];  // es lo mismo que: String[] miArray=new String[3];
+		
+		misEmpleados[0]=new Empleado("Paco Gomez", 38000, 2020, 11, 14);  //alternativa de meter diferentes tipos de datos: string y int...
+		misEmpleados[1]=new Empleado("Pepe Gyuo", 32000, 2012, 19, 04);
+		misEmpleados[2]=new Empleado("Maria garci", 41000, 2025, 15, 05);
+		
+//bucle for forma 1
+		/*for(int i=0; i<3; i++) {
+			misEmpleados[i].subeSueldo(5); // a la funcion subeSueldo le añadimos el nº que sera el pocentaje de la subida de salario
+		}
+		*/
+		
+		//########## bucle for mejorado forma 2 SIMPLIFICA #################.
+		for(Empleado e: misEmpleados) { //Empleados es el tipo almacenado en el array.  
+			e.subeSueldo(5);
+		}
+		
+		
+		
+//imprimir en pantalla la informacion
+		/*for(int i=0; i<3; i++) {
+			System.out.println("Nombe: "+ misEmpleados[i].dameNombre()+   //concatenamos los 3 tipos de datos para imprimir por pantalla
+								"Sueldo: "+ misEmpleados[i].dameSueldo()+
+								"Fecha de alta: "+ misEmpleados[i].dameFechaAlta());
+		}
+		*/
+		
+		//########## bucle for mejorado forma 2 SIMPLIFICA #################.
+		for(Empleado e: misEmpleados) {
+			System.out.println("Nombe: "+ e.dameNombre()+   
+					", Sueldo: "+ e.dameSueldo()+
+					", Fecha de alta: "+ e.dameFechaAlta());
+			
+		}
+		
 	}
 
 }
@@ -42,7 +92,7 @@ class Empleado{
 	}
 	
 	//establecer variable de subir sueldo
-	public void subeSueldo(double porcentaje) {  //setter
+	public void subeSueldo(double porcentaje) {  //setter no tienen return
 		double aumento=sueldo*porcentaje/100;
 		sueldo+=aumento;
 	}
@@ -53,4 +103,3 @@ class Empleado{
 	private Date altaContrato;
 	
 }
-
