@@ -37,11 +37,23 @@ public class Uso_Empleado{
 		Jefatura jefa_Finanzas=(Jefatura) misEmpleados[5];
 		jefa_Finanzas.estableceIncentivo(5000);
 		
-
+		//imprimir interfaz video 50
+		System.out.println(jefa_Finanzas.tomar_decisiones("dar mas dias de vacaciones"));
 		
+/*//video 50 interfaces y clases internas ##############################################################
+		Empleado director_comercial= new Jefatura("Patricia Gut", 32000, 2012, 19, 04);
+		Comparable ejemplo=new Empleado("Pipo puo", 32000, 2012, 19, 04);
 		
-		
-//bucle for forma 1
+		//instancia pertenece o no a esa instancia
+		if(director_comercial instanceof Empleado) {
+			System.out.println("es de tipo jefatura que hereda de empleado");
+		}
+		if(ejemplo instanceof Comparable) {
+			System.out.println("implementa la interfaz comparable");
+		}
+		*/
+	
+//bucle for forma 1 ###########################################################################
 		/*for(int i=0; i<3; i++) {
 			misEmpleados[i].subeSueldo(5); // a la funcion subeSueldo le añadimos el nº que sera el pocentaje de la subida de salario
 		}
@@ -62,20 +74,19 @@ public class Uso_Empleado{
 		}
 		*/
 		
+		//metodo sort ordena de menos a mayor el sueldo
+		Arrays.sort(misEmpleados);//el arrays es misEmpleados
 		//########## bucle for mejorado forma 2 SIMPLIFICA #################.
 		for(Empleado e: misEmpleados) {
 			System.out.println("Nombe: "+ e.dameNombre()+   
 					", Sueldo: "+ e.dameSueldo()+
-					", Fecha de alta: "+ e.dameFechaAlta());
-			
-		}
-		
+					", Fecha de alta: "+ e.dameFechaAlta());		
+		}	
 	}
-
 }
 
 //clase  y metodo del objeto empleado
-class Empleado{
+class Empleado implements Comparable {
 	
 	public Empleado(String nom, double suel, int anio, int mes, int dia) {
 		//establecemos variables en el metodo contructor
@@ -90,7 +101,7 @@ class Empleado{
 			
 	}
 	
-	//#########################  sobrecarga de constructores dentro de una misma clase - video 39  #############################################
+//#########################  sobrecarga de constructores dentro de una misma clase - video 39  #############################################
 	public Empleado(String nom) {
 		this(nom, 30000, 2020,01,01);  //busca al otro constructor empleado que pasa los parametros de this
 		
@@ -114,20 +125,40 @@ class Empleado{
 		double aumento=sueldo*porcentaje/100;
 		sueldo+=aumento;
 	}
+	//la flecha d ela izq nos dice que estamos sobreescribiendo el metodo compareTo
+	public int compareTo(Object miObjeto) {
+		Empleado otroEmpleado=(Empleado)miObjeto;
+		
+		if(this.sueldo<otroEmpleado.sueldo) {
+			return -1;
+		}
+		if(this.sueldo>otroEmpleado.sueldo) {
+			return 1;
+		}
+		return 0;
+	}
+		
 	
 	//encapsular private que no sea visible ni pueda modificarse
 	private String nombre;
 	private double sueldo;
 	private Date altaContrato;
 	
+	
+	
 }
 
-//video 42 y 43. herencias
-class Jefatura extends Empleado {
+//video 42 y 43. herencias.  //implementar la interfaz Jefes video 50 interfaces
+class Jefatura extends Empleado implements Interfaz_Jefes{
 	
 	public Jefatura(String nom, double suel, int anio, int mes, int dia) {
 		super(nom, suel, anio, mes, dia);
 		// TODO Auto-generated constructor stub
+	}
+	
+	//hereda metodo de la interfaz: interfaz_jefes.java video 50
+	public String tomar_decisiones(String decision) {
+		return "Miembro de la direccion toma la decision: "+ decision;
 	}
 	
 	//metodo setter
