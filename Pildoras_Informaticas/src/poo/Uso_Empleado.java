@@ -19,15 +19,19 @@ public class Uso_Empleado{
 		System.out.println("Nombre: "+ empleado2.dameNombre()+", Sueldo: " + empleado2.dameSueldo()+ ", Fecha alta: "+ empleado2.dameFechaAlta());
 		System.out.println("Nombre: "+ empleado3.dameNombre()+", Sueldo: " + empleado3.dameSueldo()+ ", Fecha alta: "+ empleado3.dameFechaAlta());
 		*/
-		
-		
+
 // #####################   instancias de la clase empleado FORMA CORTA CON ARRAYS ############################################################################
-		Empleado[] misEmpleados = new Empleado[4];  // es lo mismo que: String[] miArray=new String[3];
+		Jefatura jefe_RRHH= new Jefatura("Aro", 55000, 2006, 9, 25);//polimorfismo
+		jefe_RRHH.estableceIncentivo(2570);// polimorfismo
 		
+		Empleado[] misEmpleados = new Empleado[6];  // es lo mismo que: String[] miArray=new String[3];
 		misEmpleados[0]=new Empleado("Paco Gomez", 38000, 2020, 11, 14);  //alternativa de meter diferentes tipos de datos: string y int...
 		misEmpleados[1]=new Empleado("Pepe Gyuo", 32000, 2012, 19, 04);
 		misEmpleados[2]=new Empleado("Maria garci", 41000, 2025, 15, 05);
 		misEmpleados[3]=new Empleado("Nuria pala");  //este reconocera al 2º metodo empleado
+		
+		misEmpleados[4]=jefe_RRHH; //este es polimorfismo
+		misEmpleados[5]=new Jefatura("Ana", 78000, 1999, 5, 26);//este es polimorfismo del nuevo objeto Jefatura
 		
 //bucle for forma 1
 		/*for(int i=0; i<3; i++) {
@@ -108,4 +112,28 @@ class Empleado{
 	private double sueldo;
 	private Date altaContrato;
 	
+}
+
+//video 42 y 43. herencias
+class Jefatura extends Empleado {
+	
+	public Jefatura(String nom, double suel, int anio, int mes, int dia) {
+		super(nom, suel, anio, mes, dia);
+		// TODO Auto-generated constructor stub
+	}
+	
+	//metodo setter
+	public void estableceIncentivo(double b) {
+		incentivo=b;
+	}
+	
+	//metodo getter
+	
+	public double dameSueldo() {  //este metodo sobreescribe el metodo de la calse padre: Empleado.dameSueldo()
+		double sueldoJefe=super.dameSueldo(); //alamcenamos en la variable:sueldoJefe el sueldo que retorna la clase padre dameSueldo()
+		return sueldoJefe + incentivo;
+	}
+
+	private double incentivo;
+
 }

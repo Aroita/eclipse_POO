@@ -5,7 +5,12 @@ package poo;
 
 //EL METODO STATIC: no actua sobre objetos, solo acceden a campos static y para llamarlo se usa nombreClase.nombreMetodo --> Empleados.dameIdSiguiente()
 
-public class Const_uso_final_ID {
+public class Const_uso_final_ID extends Empleados {
+
+	public Const_uso_final_ID(String nom) {
+		super(nom);
+		// TODO Auto-generated constructor stub
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
