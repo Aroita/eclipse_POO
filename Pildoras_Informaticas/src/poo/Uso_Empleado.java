@@ -30,8 +30,16 @@ public class Uso_Empleado{
 		misEmpleados[2]=new Empleado("Maria garci", 41000, 2025, 15, 05);
 		misEmpleados[3]=new Empleado("Nuria pala");  //este reconocera al 2º metodo empleado
 		
-		misEmpleados[4]=jefe_RRHH; //este es polimorfismo
+		misEmpleados[4]=jefe_RRHH; //este es polimorfismo(sustitucion)
 		misEmpleados[5]=new Jefatura("Ana", 78000, 1999, 5, 26);//este es polimorfismo del nuevo objeto Jefatura
+// refundicion de objetos de un tipo en otro tipo de dato diferente(casting) video 44. 
+		// metemos entre parentesis el tipo al que quiero covertirlo.
+		Jefatura jefa_Finanzas=(Jefatura) misEmpleados[5];
+		jefa_Finanzas.estableceIncentivo(5000);
+		
+
+		
+		
 		
 //bucle for forma 1
 		/*for(int i=0; i<3; i++) {
@@ -137,3 +145,4 @@ class Jefatura extends Empleado {
 	private double incentivo;
 
 }
+
