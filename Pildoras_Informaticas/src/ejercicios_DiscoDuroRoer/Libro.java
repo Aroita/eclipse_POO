@@ -1,4 +1,4 @@
-package ejercicios_poo;
+package ejercicios_DiscoDuroRoer;
 
 public class Libro  {
 	private int ISBN;
