@@ -37,7 +37,7 @@ public class Aeronave{
 		return numTurbinas;
 	}
 	
-	//setter
+	//setter--
 	public void id(int id) {
 		this.id=id; 
 	}
